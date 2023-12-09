@@ -13,75 +13,94 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="CALCULATE YOUR"
+        android:layout_marginTop="20dp"
+        android:text="분단위로 내 나이를 계산해봐요!"
         android:textColor="@color/textColor"
         android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="AGE"
+        android:text="분 단위 나이 계산기"
         android:padding="10dp"
+        android:background="@color/primaryColor"
         android:textColor="@color/white"
         android:textSize="25sp"
-        android:background="@color/primaryColor"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="IN MINUTES"
-        android:textColor="@color/textColor"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:text="IN MINUTES"-->
+<!--        android:textColor="@color/textColor"-->
+<!--        android:textSize="25sp"-->
+<!--        android:textStyle="bold"/>-->
 
     <Button
-        android:id="@+id/btnDatePicker"
+        android:id="@+id/btnDateSelect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#FFFFFF"
         android:textColor="#929292"
         android:text="날짜 선택하기"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="120dp"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:elevation="10dp"/>
+        android:elevation="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="31.05.1988"
+        android:text="선택한 날짜"
+        android:textColor="@color/lightGreyTextColor"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvSelectedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="0000/00/00"
         android:textColor="@color/textColor"
         android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/lightGreyTextColor"
-        android:text="Selected Date"
-        android:textSize="18sp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="1400000"
-        android:textColor="@color/textColor"
-        android:textSize="35sp"
-        android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/lightGreyTextColor"
-        android:text="Age in minutes"
-        android:textSize="18sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvAgeInMinutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="0"
+            android:textColor="@color/textColor"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="분 경과"
+            android:textColor="@color/textColor"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 
 
 </LinearLayout>
