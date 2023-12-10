@@ -213,7 +213,7 @@ class MainActivity : AppCompatActivity() {
 
 
         //달력에서 날짜 선택을 전날까지만 가능하게 제한(오늘과 미래날짜 선택못하게)
-        //86400000은 하루의 ms 값이다. 86400000의 값을 빼지 않으면 날짜 선택을 오늘까지만 제한 가능
+        //86400000은 하루의 ms 값이다. 86400000의 값을 빼면 날짜 선택을 오늘까지만 제한 가능
         //datepicker속성을 특정날짜(전날)까지만 선택할수있게 maxDate대입 (한시간 360만 밀리초*24 =8640만 밀리초)
         dpd.datePicker.maxDate = System.currentTimeMillis() - 86400000
 
