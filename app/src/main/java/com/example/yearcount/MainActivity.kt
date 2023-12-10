@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-                    // 선택한 날짜(분)
+                    // 선택한 날짜(분)    //1분 = 60초 = 1000*60
                     // 달력에서 선택한 날짜 담은변수 theDate 만들기
                     //여기서 Date 개체의 시간(밀리초)가 표시된다
                     //그리고 우리가 알고 있듯이 밀리초라는 공식은 1000으로 나누면 초로 변환될 수 있다
@@ -132,6 +132,7 @@ class MainActivity : AppCompatActivity() {
 
 
                         //몇살(나이)
+                        //1년 = 1달*12 = 1000*60*60*24*30*12
                         theDate?.let {
 
                             val selectClock = theDate.time /1000/60/60/24/30/12
@@ -150,6 +151,7 @@ class MainActivity : AppCompatActivity() {
 
 
                         //시간
+                        //1시간 = 1000*60*60
                         theDate?.let {
 
                             val selectClock = theDate.time /1000/60/60
@@ -166,6 +168,7 @@ class MainActivity : AppCompatActivity() {
 
 
                         //일
+                        //1일 = 1시간*24 = 1000*60*60*24
                         theDate?.let {
 
                             val selectClock = theDate.time /1000/60/60/24
@@ -184,6 +187,7 @@ class MainActivity : AppCompatActivity() {
 
 
                         //개월
+                        //30일(한달) = 1일*30 = 1000*60*60*24*30
                         theDate?.let {
 
                             val selectMonth = theDate.time /1000/60/60/24/30
