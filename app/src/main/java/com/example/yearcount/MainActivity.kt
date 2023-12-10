@@ -77,14 +77,15 @@ class MainActivity : AppCompatActivity() {
 
 
                     // 선택한 날짜(분)
+                    // 달력에서 선택한 날짜 담은변수 theDate 만들기
                     //여기서 Date 개체의 시간(밀리초)가 표시된다
                     //그리고 우리가 알고 있듯이 밀리초라는 공식은 1000으로 나누면 초로 변환될 수 있다
                     //그리고 초를 60으로 나누어 분으로 변환할 수 있다
-                    //이제 선택한 날짜를 분 단위로 지정한다
+                    //이제 선택한 날짜를 분 단위로 변경
                     // null안정성을 위해 let안에 코드써준다
                     //그리고 time과 getTime은 같은 기능이다.
                 theDate?.let {
-                    val selectedDateInMinutes = theDate.time / 60000
+                    val selectedDateInMinutes = theDate.time /1000/6
 
                     // 여기서는 위에서 사용한 날짜 형식을 사용하여 현재 날짜를 분석했다.
                     // selectedDateInMinutes으로 선택한 날짜에서 현재까지 얼마나 시간이 지났는지 초단위로
@@ -97,13 +98,13 @@ class MainActivity : AppCompatActivity() {
                     currentDate?.let {
                         // 현재 날짜(분)
                         // 지금까지 지난시간을 분단위로(선택한날짜와 현재날짜 사이 지난시간을 분단위로)
-                        val currentDateInMinutes = currentDate.time / 60000
+                        val currentDateInMinutes = currentDate.time /1000/6
 
                         //select는 1970년 1월 1일 자정부터 태어날 날 자정까지의 시간
                         //current는 1970년 1월 1일 자정부터 오늘 날까지의 시간
                         //이제 몇 분 안에 차이를 확인하겠다.
                         //현재 Minutes에서 선택한 Minutes를 뺀다.
-                        //몇 분 차이가 나는지 알수있음.
+                        //현재 Minutes에서 선택한 Minutes를 빼야지 두 날짜사이의 분을 정확히 알수있다 
                         val differenceInMinutes = currentDateInMinutes - selectedDateInMinutes
 
 
