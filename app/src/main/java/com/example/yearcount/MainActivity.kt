@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import java.text.SimpleDateFormat
+import java.time.Clock
 import java.util.Calendar
 import java.util.Locale
 
@@ -19,6 +20,10 @@ class MainActivity : AppCompatActivity() {
     // Texview의 변수를 null형식으로 설정한이유는 지금은 초기화하지 않을거지만 나중에 변수를 부여할수도 있기 때문 / 수정가능하게하기 위해서 var사용
     private var tvSelectedDate : TextView? = null
     private var tvAgeInMinutes : TextView? = null
+    private var tvClock : TextView? = null
+    private var tvMonth : TextView? = null
+    private var tvDay : TextView? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +38,15 @@ class MainActivity : AppCompatActivity() {
 
         // tvAgeInMinute변수 초기화(레이아웃에서 텍스트 뷰의 id를 가져옴)
         tvAgeInMinutes = findViewById(R.id.tvAgeInMinutes)
+
+        //tvClock변수 초기화
+        tvClock = findViewById(R.id.tvClock)
+
+        //tvMonth변수 초기화
+        tvMonth = findViewById(R.id.tvMonth)
+
+        //tvMonth변수 초기화
+        tvDay = findViewById(R.id.tvDay)
 
 
 
@@ -85,7 +99,7 @@ class MainActivity : AppCompatActivity() {
                     // null안정성을 위해 let안에 코드써준다
                     //그리고 time과 getTime은 같은 기능이다.
                 theDate?.let {
-                    val selectedDateInMinutes = theDate.time /1000/6
+                    val selectedDateInMinutes = theDate.time /1000/60
 
                     // 여기서는 위에서 사용한 날짜 형식을 사용하여 현재 날짜를 분석했다.
                     // selectedDateInMinutes으로 선택한 날짜에서 현재까지 얼마나 시간이 지났는지 초단위로
@@ -93,32 +107,80 @@ class MainActivity : AppCompatActivity() {
                     val currentDate = sdf.parse(sdf.format(System.currentTimeMillis()))
 
 
-
-
                     currentDate?.let {
                         // 현재 날짜(분)
                         // 지금까지 지난시간을 분단위로(선택한날짜와 현재날짜 사이 지난시간을 분단위로)
-                        val currentDateInMinutes = currentDate.time /1000/6
+                        val currentDateInMinutes = currentDate.time /1000/60
 
                         //select는 1970년 1월 1일 자정부터 태어날 날 자정까지의 시간
                         //current는 1970년 1월 1일 자정부터 오늘 날까지의 시간
                         //이제 몇 분 안에 차이를 확인하겠다.
                         //현재 Minutes에서 선택한 Minutes를 뺀다.
-                        //현재 Minutes에서 선택한 Minutes를 빼야지 두 날짜사이의 분을 정확히 알수있다 
+                        //현재 Minutes에서 선택한 Minutes를 빼야지 두 날짜사이의 분을 정확히 알수있다
                         val differenceInMinutes = currentDateInMinutes - selectedDateInMinutes
 
 
-
-                        // differenceInMinutes의 결괏값을 텍스트뷰에 표현
+                        // differenceInMinutes의 결괏값을 텍스트뷰에 표현 (tvAgeInMinutes자리에 분표현됨)
                         tvAgeInMinutes?.text = differenceInMinutes.toString()
+
+
+
+                        //시간
+                        theDate?.let {
+
+                            val selectClock = theDate.time /1000/60/60
+                            val currentDate = sdf.parse(sdf.format(System.currentTimeMillis()))
+
+                            currentDate?.let {
+                                val currenClock = currentDate.time /1000/60/60
+
+                                val differenceInClock = currenClock-selectClock
+                                tvClock?.text = differenceInClock.toString()
+
+                            }
+                        }
+
+
+                        //일
+                        theDate?.let {
+
+                            val selectClock = theDate.time /1000/60/60/24
+                            val currentDate = sdf.parse(sdf.format(System.currentTimeMillis()))
+
+                            currentDate?.let {
+                                val currenClock = currentDate.time /1000/60/60/24
+
+                                val differenceInClock = currenClock-selectClock
+                                tvDay?.text = differenceInClock.toString()
+
+                            }
+                        }
+
+
+
+
+                        //개월
+                        theDate?.let {
+
+                            val selectMonth = theDate.time /1000/60/60/24/30
+                            val currentDate = sdf.parse(sdf.format(System.currentTimeMillis()))
+
+                            currentDate?.let {
+                                val currenClock = currentDate.time /1000/60/60/24/30
+
+                                val differenceInClock = currenClock-selectMonth
+                                tvMonth?.text = differenceInClock.toString()
+
+                            }
+                        }
+
+
+
+
                     }
                 }
 
-            },
-            year,
-            month,
-            day
-        )
+            }, year, month, day )
 
 
 
