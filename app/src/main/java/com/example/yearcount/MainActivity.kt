@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private var tvClock : TextView? = null
     private var tvMonth : TextView? = null
     private var tvDay : TextView? = null
+    private var tvYear : TextView? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +34,10 @@ class MainActivity : AppCompatActivity() {
         // btn이라는 변수 초기화(레이아웃에서 텍스트 뷰의 id를 가져옴)
         val btn : Button = findViewById(R.id.btnDateSelect)
 
-        // tvSelectedDate이라는 변수 초기화(레이아웃에서 텍스트 뷰의 id를 가져옴)
+        // tvSelectedDate이라는 변수 초기화
         tvSelectedDate = findViewById(R.id.tvSelectedDate)
 
-        // tvAgeInMinute변수 초기화(레이아웃에서 텍스트 뷰의 id를 가져옴)
+        // tvAgeInMinute변수 초기화
         tvAgeInMinutes = findViewById(R.id.tvAgeInMinutes)
 
         //tvClock변수 초기화
@@ -45,8 +46,12 @@ class MainActivity : AppCompatActivity() {
         //tvMonth변수 초기화
         tvMonth = findViewById(R.id.tvMonth)
 
-        //tvMonth변수 초기화
+        //tvDay변수 초기화
         tvDay = findViewById(R.id.tvDay)
+
+        //tvYear변수 초기화
+        tvYear = findViewById(R.id.tvYear)
+
 
 
 
@@ -122,6 +127,25 @@ class MainActivity : AppCompatActivity() {
 
                         // differenceInMinutes의 결괏값을 텍스트뷰에 표현 (tvAgeInMinutes자리에 분표현됨)
                         tvAgeInMinutes?.text = differenceInMinutes.toString()
+
+
+
+
+                        //몇살(나이)
+                        theDate?.let {
+
+                            val selectClock = theDate.time /1000/60/60/24/30/12
+                            val currentDate = sdf.parse(sdf.format(System.currentTimeMillis()))
+
+                            currentDate?.let {
+                                val currenClock = currentDate.time /1000/60/60/24/30/12
+
+                                val differenceInClock = currenClock-selectClock
+                                tvYear?.text = differenceInClock.toString()
+
+                            }
+                        }
+
 
 
 
